@@ -601,6 +601,13 @@ input, select, textarea {
   color: white;
 }
 
+.property-card__badge--unavailable {
+  left: auto;
+  right: 3.75rem;
+  background: rgba(17, 24, 39, 0.9);
+  color: white;
+}
+
 .property-card__favorite {
   position: absolute;
   top: 1rem;
@@ -654,6 +661,16 @@ input, select, textarea {
   margin-bottom: 0.875rem;
 }
 
+.property-card__notice {
+  font-size: 0.8rem;
+  color: #9a3412;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 10px;
+  padding: 0.5rem 0.625rem;
+  margin-bottom: 0.875rem;
+}
+
 .property-card__features {
   display: flex;
   flex-wrap: wrap;
@@ -677,6 +694,19 @@ input, select, textarea {
 
 .property-card__footer .btn {
   flex: 1;
+}
+
+.property-card--unavailable {
+  opacity: 0.9;
+}
+
+.property-card--unavailable .property-card__img {
+  filter: grayscale(0.5);
+}
+
+.btn--disabled {
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 .properties__cta {
