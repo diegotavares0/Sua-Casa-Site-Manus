@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sua Casa | Encontre o Imóvel dos Seus Sonhos</title>
+  <meta name="description" content="Sua Casa Imóveis - Encontre casas, apartamentos e terrenos à venda e para alugar. Os melhores imóveis com os melhores preços." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">
+        <span class="nav__logo-icon">🏠</span>
+        <span class="nav__logo-text">Sua Casa</span>
+      </a>
+      <ul class="nav__menu" id="navMenu">
+        <li><a href="#inicio" class="nav__link active">Início</a></li>
+        <li><a href="#imoveis" class="nav__link">Imóveis</a></li>
+        <li><a href="#servicos" class="nav__link">Serviços</a></li>
+        <li><a href="#sobre" class="nav__link">Sobre</a></li>
+        <li><a href="#contato" class="nav__link">Contato</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="#contato" class="btn btn--primary btn--sm">Fale Conosco</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+      <div class="hero__background">
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="hero__content container">
+        <div class="hero__text">
+          <span class="hero__tag">✨ Mais de 1.200 imóveis disponíveis</span>
+          <h1 class="hero__title">
+            Encontre o Imóvel<br />
+            <span class="hero__title--highlight">dos Seus Sonhos</span>
+          </h1>
+          <p class="hero__subtitle">
+            Casas, apartamentos e terrenos nos melhores bairros.<br />
+            Compra, venda e aluguel com total segurança.
+          </p>
+        </div>
+        <div class="search-box">
+          <div class="search-box__tabs">
+            <button class="search-box__tab active" data-tab="comprar">Comprar</button>
+            <button class="search-box__tab" data-tab="alugar">Alugar</button>
+            <button class="search-box__tab" data-tab="vender">Vender</button>
+          </div>
+          <div class="search-box__form">
+            <div class="search-box__field">
+              <label>Localização</label>
+              <input type="text" placeholder="Cidade, bairro ou endereço..." id="searchLocation" />
+            </div>
+            <div class="search-box__field">
+              <label>Tipo de Imóvel</label>
+              <select id="searchType">
+                <option value="">Todos os tipos</option>
+                <option value="casa">Casa</option>
+                <option value="apartamento">Apartamento</option>
+                <option value="terreno">Terreno</option>
+                <option value="comercial">Comercial</option>
+                <option value="sitio">Sítio / Chácara</option>
+              </select>
+            </div>
+            <div class="search-box__field">
+              <label>Faixa de Preço</label>
+              <select id="searchPrice">
+                <option value="">Qualquer preço</option>
+                <option value="200-500">R$ 200k – R$ 500k</option>
+                <option value="500-1000">R$ 500k – R$ 1M</option>
+                <option value="1000-2000">R$ 1M – R$ 2M</option>
+                <option value="2000+">Acima de R$ 2M</option>
+              </select>
+            </div>
+            <button class="btn btn--primary btn--lg search-box__btn" onclick="searchProperties()">
+              🔍 Buscar Imóveis
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="hero__stats">
+        <div class="container">
+          <div class="hero__stats-grid">
+            <div class="hero__stat">
+              <strong>1.200+</strong>
+              <span>Imóveis Disponíveis</span>
+            </div>
+            <div class="hero__stat">
+              <strong>850+</strong>
+              <span>Clientes Satisfeitos</span>
+            </div>
+            <div class="hero__stat">
+              <strong>15+</strong>
+              <span>Anos de Experiência</span>
+            </div>
+            <div class="hero__stat">
+              <strong>98%</strong>
+              <span>Taxa de Satisfação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section class="properties" id="imoveis">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Destaques</span>
+          <h2 class="section-title">Imóveis em Destaque</h2>
+          <p class="section-subtitle">Selecionamos os melhores imóveis para você encontrar sua casa ideal</p>
+        </div>
+        <div class="properties__filters">
+          <button class="filter-btn active" data-filter="todos">Todos</button>
+          <button class="filter-btn" data-filter="casa">Casas</button>
+          <button class="filter-btn" data-filter="apartamento">Apartamentos</button>
+          <button class="filter-btn" data-filter="terreno">Terrenos</button>
+          <button class="filter-btn" data-filter="comercial">Comercial</button>
+        </div>
+        <div class="properties__grid" id="propertiesGrid">
+          <!-- Casa 1 -->
+          <div class="property-card" data-type="casa" data-deal="venda">
+            <div class="property-card__image">
+              <div class="property-card__img property-card__img--1"></div>
+              <span class="property-card__badge property-card__badge--venda">Venda</span>
+              <button class="property-card__favorite" aria-label="Favoritar">♡</button>
+            </div>
+            <div class="property-card__body">
+              <div class="property-card__price">R$ 750.000</div>
+              <h3 class="property-card__title">Casa Moderna com Piscina</h3>
+              <p class="property-card__location">📍 Jardim Europa, São Paulo - SP</p>
+              <div class="property-card__features">
+                <span>🛏️ 4 quartos</span>
+                <span>🚿 3 banheiros</span>
+                <span>🚗 2 vagas</span>
+                <span>📐 280m²</span>
+              </div>
+              <div class="property-card__footer">
+                <a href="#contato" class="btn btn--outline btn--sm">Ver Detalhes</a>
+                <a href="#contato" class="btn btn--primary btn--sm">Agendar Visita</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Apartamento 1 -->
+          <div class="property-card" data-type="apartamento" data-deal="venda">
+            <div class="property-card__image">
+              <div class="property-card__img property-card__img--2"></div>
+              <span class="property-card__badge property-card__badge--venda">Venda</span>
+              <button class="property-card__favorite" aria-label="Favoritar">♡</button>
+            </div>
+            <div class="property-card__body">
+              <div class="property-card__price">R$ 420.000</div>
+              <h3 class="property-card__title">Apartamento Alto Padrão</h3>
+              <p class="property-card__location">📍 Moema, São Paulo - SP</p>
+              <div class="property-card__features">
+                <span>🛏️ 3 quartos</span>
+                <span>🚿 2 banheiros</span>
+                <span>🚗 2 vagas</span>
+                <span>📐 120m²</span>
+              </div>
+              <div class="property-card__footer">
+                <a href="#contato" class="btn btn--outline btn--sm">Ver Detalhes</a>
+                <a href="#contato" class="btn btn--primary btn--sm">Agendar Visita</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Casa 2 -->
+          <div class="property-card" data-type="casa" data-deal="aluguel">
+            <div class="property-card__image">
+              <div class="property-card__img property-card__img--3"></div>
+              <span class="property-card__badge property-card__badge--aluguel">Aluguel</span>
+              <button class="property-card__favorite" aria-label="Favoritar">♡</button>
+            </div>
+            <div class="property-card__body">
+              <div class="property-card__price">R$ 4.500<small>/mês</small></div>
+              <h3 class="property-card__title">Casa Térrea com Quintal</h3>
+              <p class="property-card__location">📍 Vila Mariana, São Paulo - SP</p>
+              <div class="property-card__features">
+                <span>🛏️ 3 quartos</span>
+                <span>🚿 2 banheiros</span>
+                <span>🚗 1 vaga</span>
+                <span>📐 160m²</span>
+              </div>
+              <div class="property-card__footer">
+                <a href="#contato" class="btn btn--outline btn--sm">Ver Detalhes</a>
+                <a href="#contato" class="btn btn--primary btn--sm">Agendar Visita</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Apartamento 2 -->
+          <div class="property-card" data-type="apartamento" data-deal="aluguel">
+            <div class="property-card__image">
+              <div class="property-card__img property-card__img--4"></div>
+              <span class="property-card__badge property-card__badge--aluguel">Aluguel</span>
+              <button class="property-card__favorite" aria-label="Favoritar">♡</button>
+            </div>
+            <div class="property-card__body">
+              <div class="property-card__price">R$ 2.800<small>/mês</small></div>
+              <h3 class="property-card__title">Studio Moderno no Centro</h3>
+              <p class="property-card__location">📍 República, São Paulo - SP</p>
+              <div class="property-card__features">
+                <span>🛏️ 1 quarto</span>
+                <span>🚿 1 banheiro</span>
+                <span>🚗 1 vaga</span>
+                <span>📐 45m²</span>
+              </div>
+              <div class="property-card__footer">
+                <a href="#contato" class="btn btn--outline btn--sm">Ver Detalhes</a>
+                <a href="#contato" class="btn btn--primary btn--sm">Agendar Visita</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Terreno -->
+          <div class="property-card" data-type="terreno" data-deal="venda">
+            <div class="property-card__image">
+              <div class="property-card__img property-card__img--5"></div>
+              <span class="property-card__badge property-card__badge--venda">Venda</span>
+              <button class="property-card__favorite" aria-label="Favoritar">♡</button>
+            </div>
+            <div class="property-card__body">
+              <div class="property-card__price">R$ 320.000</div>
+              <h3 class="property-card__title">Terreno em Condomínio Fechado</h3>
+              <p class="property-card__location">📍 Alphaville, Barueri - SP</p>
+              <div class="property-card__features">
+                <span>📐 400m²</span>
+                <span>🌳 Área verde</span>
+                <span>🔒 Condomínio</span>
+                <span>🏗️ Pronto p/ construir</span>
+              </div>
+              <div class="property-card__footer">
+                <a href="#contato" class="btn btn--outline btn--sm">Ver Detalhes</a>
+                <a href="#contato" class="btn btn--primary btn--sm">Agendar Visita</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comercial -->
+          <div class="property-card" data-type="comercial" data-deal="aluguel">
+            <div class="property-card__image">
+              <div class="property-card__img property-card__img--6"></div>
+              <span class="property-card__badge property-card__badge--aluguel">Aluguel</span>
+              <button class="property-card__favorite" aria-label="Favoritar">♡</button>
+            </div>
+            <div class="property-card__body">
+              <div class="property-card__price">R$ 8.500<small>/mês</small></div>
+              <h3 class="property-card__title">Sala Comercial Prime</h3>
+              <p class="property-card__location">📍 Faria Lima, São Paulo - SP</p>
+              <div class="property-card__features">
+                <span>📐 200m²</span>
+                <span>🚗 4 vagas</span>
+                <span>🏢 Andar inteiro</span>
+                <span>⚡ Gerador</span>
+              </div>
+              <div class="property-card__footer">
+                <a href="#contato" class="btn btn--outline btn--sm">Ver Detalhes</a>
+                <a href="#contato" class="btn btn--primary btn--sm">Agendar Visita</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="properties__cta">
+          <a href="#contato" class="btn btn--primary btn--lg">Ver Todos os Imóveis</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">O que Oferecemos</span>
+          <h2 class="section-title">Nossos Serviços</h2>
+          <p class="section-subtitle">Soluções completas para todas as suas necessidades imobiliárias</p>
+        </div>
+        <div class="services__grid">
+          <div class="service-card">
+            <div class="service-card__icon">🏡</div>
+            <h3 class="service-card__title">Compra de Imóveis</h3>
+            <p class="service-card__desc">
+              Encontramos o imóvel ideal para você e sua família. Nossa equipe especializada acompanha todo o processo de compra com segurança e transparência.
+            </p>
+            <ul class="service-card__list">
+              <li>✅ Consultoria personalizada</li>
+              <li>✅ Análise jurídica completa</li>
+              <li>✅ Negociação do melhor preço</li>
+              <li>✅ Suporte até a entrega das chaves</li>
+            </ul>
+          </div>
+          <div class="service-card service-card--featured">
+            <div class="service-card__badge">Mais Popular</div>
+            <div class="service-card__icon">🔑</div>
+            <h3 class="service-card__title">Aluguel de Imóveis</h3>
+            <p class="service-card__desc">
+              Processo rápido e seguro para locação residencial e comercial. Garantimos a melhor experiência tanto para locador quanto locatário.
+            </p>
+            <ul class="service-card__list">
+              <li>✅ Análise de crédito gratuita</li>
+              <li>✅ Contrato digital seguro</li>
+              <li>✅ Gestão do imóvel</li>
+              <li>✅ Seguro fiança disponível</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">💰</div>
+            <h3 class="service-card__title">Venda de Imóveis</h3>
+            <p class="service-card__desc">
+              Vendemos seu imóvel pelo melhor valor de mercado. Com nossa rede de clientes e estratégias de marketing, garantimos agilidade na venda.
+            </p>
+            <ul class="service-card__list">
+              <li>✅ Avaliação gratuita</li>
+              <li>✅ Fotografia profissional</li>
+              <li>✅ Divulgação nos maiores portais</li>
+              <li>✅ Acompanhamento completo</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">📋</div>
+            <h3 class="service-card__title">Gestão de Imóveis</h3>
+            <p class="service-card__desc">
+              Administramos seu imóvel com total profissionalismo. Cuidamos de tudo para que você não precise se preocupar.
+            </p>
+            <ul class="service-card__list">
+              <li>✅ Cobrança de aluguéis</li>
+              <li>✅ Manutenção preventiva</li>
+              <li>✅ Relatórios mensais</li>
+              <li>✅ Suporte 24/7</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">🏦</div>
+            <h3 class="service-card__title">Financiamento</h3>
+            <p class="service-card__desc">
+              Auxiliamos na obtenção do melhor financiamento imobiliário. Trabalhamos com os principais bancos para garantir as melhores taxas.
+            </p>
+            <ul class="service-card__list">
+              <li>✅ Simulação gratuita</li>
+              <li>✅ Parceria com CEF e bancos</li>
+              <li>✅ Uso do FGTS</li>
+              <li>✅ Processo rápido</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">⚖️</div>
+            <h3 class="service-card__title">Assessoria Jurídica</h3>
+            <p class="service-card__desc">
+              Nossa equipe jurídica especializada garante toda a segurança legal das suas transações imobiliárias.
+            </p>
+            <ul class="service-card__list">
+              <li>✅ Análise de documentação</li>
+              <li>✅ Elaboração de contratos</li>
+              <li>✅ Regularização de imóveis</li>
+              <li>✅ Consultoria tributária</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="sobre">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__visual">
+            <div class="about__img-main"></div>
+            <div class="about__img-secondary"></div>
+            <div class="about__badge-years">
+              <strong>15+</strong>
+              <span>Anos no mercado</span>
+            </div>
+          </div>
+          <div class="about__content">
+            <span class="section-tag">Sobre Nós</span>
+            <h2 class="section-title">Por que escolher a Sua Casa?</h2>
+            <p class="about__text">
+              Há mais de 15 anos no mercado imobiliário, a <strong>Sua Casa</strong> é referência em qualidade, confiança e atendimento personalizado. Nossa missão é transformar o sonho da casa própria em realidade.
+            </p>
+            <p class="about__text">
+              Com uma equipe de corretores experientes e certificados pelo CRECI, oferecemos suporte completo em todas as etapas da sua jornada imobiliária. Atendemos em toda a Grande São Paulo e região.
+            </p>
+            <div class="about__features">
+              <div class="about__feature">
+                <span class="about__feature-icon">🏆</span>
+                <div>
+                  <strong>Premiados pelo setor</strong>
+                  <p>Top 10 Imobiliárias de SP por 5 anos consecutivos</p>
+                </div>
+              </div>
+              <div class="about__feature">
+                <span class="about__feature-icon">👥</span>
+                <div>
+                  <strong>Equipe especializada</strong>
+                  <p>Mais de 30 corretores certificados pelo CRECI</p>
+                </div>
+              </div>
+              <div class="about__feature">
+                <span class="about__feature-icon">🌐</span>
+                <div>
+                  <strong>Atendimento digital</strong>
+                  <p>WhatsApp, video chamada e visitas presenciais</p>
+                </div>
+              </div>
+            </div>
+            <a href="#contato" class="btn btn--primary btn--lg">Fale com um Especialista</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Depoimentos</span>
+          <h2 class="section-title">O que nossos clientes dizem</h2>
+          <p class="section-subtitle">Histórias reais de quem realizou o sonho da casa própria</p>
+        </div>
+        <div class="testimonials__grid">
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-card__text">
+              "A equipe da Sua Casa foi incrível! Me ajudaram a encontrar o apartamento perfeito em tempo record. Processo super tranquilo e transparente do início ao fim."
+            </p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar testimonial-card__avatar--1"></div>
+              <div>
+                <strong>Ana Lima</strong>
+                <span>São Paulo - SP</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card testimonial-card--featured">
+            <div class="testimonial-card__stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-card__text">
+              "Vendi meu imóvel em apenas 3 semanas! A divulgação foi excelente e o suporte jurídico me deu muita segurança. Super recomendo a Sua Casa para quem quer vender rápido e bem."
+            </p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar testimonial-card__avatar--2"></div>
+              <div>
+                <strong>Roberto Silva</strong>
+                <span>Santo André - SP</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-card__text">
+              "Realizei o sonho da casa própria com a ajuda da Sua Casa. Eles cuidaram de tudo, desde a busca do financiamento até a entrega das chaves. Profissionalismo exemplar!"
+            </p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar testimonial-card__avatar--3"></div>
+              <div>
+                <strong>Carla Mendes</strong>
+                <span>Guarulhos - SP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-section__content">
+          <h2>Pronto para encontrar sua casa ideal?</h2>
+          <p>Nossa equipe está pronta para te ajudar. Entre em contato agora mesmo!</p>
+          <div class="cta-section__actions">
+            <a href="https://wa.me/5511999999999" class="btn btn--white btn--lg" target="_blank" rel="noopener noreferrer">
+              💬 WhatsApp
+            </a>
+            <a href="#contato" class="btn btn--outline-white btn--lg">📞 Ligar Agora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Fale Conosco</span>
+          <h2 class="section-title">Entre em Contato</h2>
+          <p class="section-subtitle">Preencha o formulário e nossa equipe entrará em contato em até 24h</p>
+        </div>
+        <div class="contact__grid">
+          <div class="contact__info">
+            <div class="contact__info-item">
+              <span class="contact__info-icon">📍</span>
+              <div>
+                <strong>Endereço</strong>
+                <p>Av. Paulista, 1000 - Bela Vista<br />São Paulo - SP, 01310-100</p>
+              </div>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-icon">📞</span>
+              <div>
+                <strong>Telefone</strong>
+                <p>(11) 3000-0000<br />(11) 99999-9999</p>
+              </div>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-icon">✉️</span>
+              <div>
+                <strong>E-mail</strong>
+                <p>contato@suacasa.com.br<br />vendas@suacasa.com.br</p>
+              </div>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-icon">🕐</span>
+              <div>
+                <strong>Horário de Atendimento</strong>
+                <p>Seg – Sex: 8h às 18h<br />Sáb: 9h às 13h</p>
+              </div>
+            </div>
+            <div class="contact__social">
+              <a href="#" class="contact__social-link" aria-label="Instagram">📸 Instagram</a>
+              <a href="#" class="contact__social-link" aria-label="Facebook">👍 Facebook</a>
+              <a href="#" class="contact__social-link" aria-label="YouTube">▶️ YouTube</a>
+            </div>
+          </div>
+          <form class="contact__form" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="name">Nome Completo *</label>
+              <input type="text" id="name" name="name" placeholder="Seu nome completo" required />
+              <span class="form-error" id="nameError"></span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+                <span class="form-error" id="emailError"></span>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefone *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required />
+                <span class="form-error" id="phoneError"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="interest">Interesse</label>
+              <select id="interest" name="interest">
+                <option value="">Selecione seu interesse</option>
+                <option value="comprar">Comprar um imóvel</option>
+                <option value="alugar">Alugar um imóvel</option>
+                <option value="vender">Vender meu imóvel</option>
+                <option value="avaliar">Avaliar meu imóvel</option>
+                <option value="financiamento">Financiamento</option>
+                <option value="outro">Outro assunto</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Mensagem *</label>
+              <textarea id="message" name="message" rows="5" placeholder="Descreva o que você procura ou como podemos ajudar..." required></textarea>
+              <span class="form-error" id="messageError"></span>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg btn--full">
+              Enviar Mensagem 🚀
+            </button>
+            <p class="form-privacy">🔒 Seus dados estão protegidos. Não compartilhamos informações com terceiros.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="nav__logo">
+            <span class="nav__logo-icon">🏠</span>
+            <span class="nav__logo-text" style="color: white;">Sua Casa</span>
+          </a>
+          <p class="footer__desc">
+            Realizando sonhos há mais de 15 anos. A sua imobiliária de confiança em São Paulo e região.
+          </p>
+          <p class="footer__creci">CRECI-SP: 00000-J</p>
+        </div>
+        <div class="footer__links">
+          <h4>Imóveis</h4>
+          <ul>
+            <li><a href="#imoveis">Casas à Venda</a></li>
+            <li><a href="#imoveis">Apartamentos à Venda</a></li>
+            <li><a href="#imoveis">Casas para Alugar</a></li>
+            <li><a href="#imoveis">Apartamentos para Alugar</a></li>
+            <li><a href="#imoveis">Terrenos</a></li>
+            <li><a href="#imoveis">Imóveis Comerciais</a></li>
+          </ul>
+        </div>
+        <div class="footer__links">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos">Compra de Imóveis</a></li>
+            <li><a href="#servicos">Aluguel de Imóveis</a></li>
+            <li><a href="#servicos">Venda de Imóveis</a></li>
+            <li><a href="#servicos">Gestão de Imóveis</a></li>
+            <li><a href="#servicos">Financiamento</a></li>
+            <li><a href="#servicos">Assessoria Jurídica</a></li>
+          </ul>
+        </div>
+        <div class="footer__links">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#">Blog Imobiliário</a></li>
+            <li><a href="#">Trabalhe Conosco</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Sua Casa Imóveis. Todos os direitos reservados.</p>
+        <p>Desenvolvido com ❤️ para ajudar você a encontrar sua casa ideal</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Modal -->
+  <div class="modal" id="successModal" aria-hidden="true">
+    <div class="modal__overlay" onclick="closeModal()"></div>
+    <div class="modal__content">
+      <div class="modal__icon">✅</div>
+      <h3>Mensagem Enviada!</h3>
+      <p>Obrigado pelo contato! Nossa equipe entrará em contato em até 24 horas.</p>
+      <button class="btn btn--primary" onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
